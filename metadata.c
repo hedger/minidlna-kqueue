@@ -492,7 +492,7 @@ GetAudioMetadata(const char *path, char *name)
 	                   m.dlna_pn, song.mime?song.mime:m.mime, album_art);
 	if( ret != SQLITE_OK )
 	{
-		fprintf(stderr, "Error inserting details for '%s'!\n", path);
+		DPRINTF(E_ERROR, L_DB_SQL, "Error inserting details for '%s'!\n", path);
 		ret = 0;
 	}
 	else
@@ -675,7 +675,7 @@ no_exifdata:
 	                   m.rotation, thumb, m.creator, m.dlna_pn, m.mime);
 	if( ret != SQLITE_OK )
 	{
-		fprintf(stderr, "Error inserting details for '%s'!\n", path);
+		DPRINTF(E_ERROR, L_DB_SQL, "Error inserting details for '%s'!\n", path);
 		ret = 0;
 	}
 	else
@@ -1587,7 +1587,7 @@ video_no_dlna:
                            m.mime, album_art);
 	if( ret != SQLITE_OK )
 	{
-		fprintf(stderr, "Error inserting details for '%s'!\n", path);
+		DPRINTF(E_ERROR, L_DB_SQL, "Error inserting details for '%s'!\n", path);
 		ret = 0;
 	}
 	else

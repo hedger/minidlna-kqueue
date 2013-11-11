@@ -999,6 +999,15 @@ main(int argc, char **argv)
 		else if (pthread_create(&inotify_thread, NULL, start_inotify, NULL) != 0)
 			DPRINTF(E_FATAL, L_GENERAL, "ERROR: pthread_create() failed for start_inotify. EXITING\n");
 	}
+#elif defined(HAVE_SYS_EVENT_H)
+	if( GETFLAG(INOTIFY_MASK) )
+	{
+		if (!sqlite3_threadsafe() || sqlite3_libversion_number() < 3005001)
+			DPRINTF(E_ERROR, L_GENERAL, "SQLite library is not threadsafe!	"
+			"Kqueue will be disabled.\n");
+		else if (pthread_create(&inotify_thread, NULL, start_kqueue, NULL) != 0)
+			DPRINTF(E_FATAL, L_GENERAL, "ERROR: pthread_create() failed for start_kqueue. EXITING\n");
+	}
 #endif
 	smonitor = OpenAndConfMonitorSocket();
 
