@@ -33,7 +33,7 @@
 #include "upnpglobalvars.h"
 #include "log.h"
 
-inline int
+int
 strcatf(struct string_s *str, const char *fmt, ...)
 {
 	int ret;
@@ -52,14 +52,14 @@ strcatf(struct string_s *str, const char *fmt, ...)
 	return ret;
 }
 
-inline void
+void
 strncpyt(char *dst, const char *src, size_t len)
 {
 	strncpy(dst, src, len);
 	dst[len-1] = '\0';
 }
 
-inline int
+int
 xasprintf(char **strp, char *fmt, ...)
 {
 	va_list args;
@@ -397,7 +397,7 @@ is_audio(const char * file)
 int
 is_image(const char * file)
 {
-	return (ends_with(file, ".jpg") || ends_with(file, ".jpeg"));
+	return (ends_with(file, ".jpg") || ends_with(file, ".jpeg") || ends_with(file, ".mpo"));
 }
 
 int

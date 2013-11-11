@@ -37,14 +37,14 @@ typedef signed long long __s64;
 #endif
 
 
-inline __u16 le16_to_cpu(__u16 le16);
-inline __u32 le32_to_cpu(__u32 le32);
-inline __u64 le64_to_cpu(__u64 le64);
-inline __u8 fget_byte(FILE *fp);
-inline __u16 fget_le16(FILE *fp);
-inline __u32 fget_le32(FILE *fp);
+__u16 le16_to_cpu(__u16 le16);
+__u32 le32_to_cpu(__u32 le32);
+__u64 le64_to_cpu(__u64 le64);
+__u8 fget_byte(FILE *fp);
+__u16 fget_le16(FILE *fp);
+__u32 fget_le32(FILE *fp);
 
-inline __u32 cpu_to_be32(__u32 cpu32);
+__u32 cpu_to_be32(__u32 cpu32);
 
 extern char * sha1_hex(char *key);
 
